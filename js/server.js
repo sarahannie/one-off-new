@@ -11,7 +11,7 @@ document.getElementById('appointment-form').addEventListener('submit', function(
     };
 
     // Send the form data to the server
-    fetch('http://localhost:3000/send-email', {
+    fetch('https://one-off-elite-server.vercel.app/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
