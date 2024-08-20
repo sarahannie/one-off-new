@@ -545,3 +545,15 @@
     background-color: gray;
     color: white;
   }
+
+  ::placeholder {
+    
+    font-size: 1rem; 
+  }
+  
+  /* Media query for small screens */
+  @media (max-width: 600px) {
+    ::placeholder {
+      font-size: 0.6rem;
+    }
+  }
