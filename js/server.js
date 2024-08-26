@@ -74,22 +74,22 @@ document.getElementById('appointment-form').addEventListener('submit', function(
 
   // Collect form data
   const formData = {
-      gname: document.getElementById('gname').value,
-      gmail: document.getElementById('gmail').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      service: document.getElementById('service').value,
-      message: document.getElementById('message').value,
-      whereHeard: document.querySelector('input[placeholder="Where did you hear about us?"]').value,
-      adequateInsurance: document.querySelector('input[placeholder="Do you have adequate life insurance?"]').value,
-      retirementPlan: document.querySelector('input[placeholder="Do you have a retirement plan?"]').value,
-      reasonForInsurance: document.querySelector('input[placeholder="What is your reason to get life insurance?"]').value,
-      productEducation: document.querySelector('input[placeholder="Education about the product?"]').value,
-      retirementChoice: document.querySelector('input[placeholder="Would you want retirement by default or designer?"]').value,
-      taxPreference: document.querySelector('input[placeholder="Would you want tax-free or taxable retirement?"]').value,
-      maritalStatus: document.querySelector('input[placeholder="Are you married or single?"]').value,
-      employmentStatus: document.querySelector('input[placeholder="Are you employed or unemployed?"]').value,
-      additionalInfo: document.querySelector('input[placeholder="Any additional information?"]').value
+    gname: document.getElementById('gname').value,
+    gmail: document.getElementById('gmail').value,
+    phone: document.getElementById('phone').value,
+    address: document.getElementById('address').value,
+    service: document.getElementById('service').value,
+    message: document.getElementById('message').value,
+    whereHeard: document.querySelector('select[name="whereHeard"]').value,
+    adequateInsurance: document.querySelector('select[name="adequateInsurance"]').value,
+    retirementPlan: document.querySelector('select[name="retirementPlan"]').value,
+    reasonForInsurance: document.querySelector('input[name="reasonForInsurance"]').value,
+    productEducation: document.querySelector('select[name="productEducation"]').value,
+    retirementChoice: document.querySelector('select[name="retirementChoice"]').value,
+    taxPreference: document.querySelector('select[name="taxPreference"]').value,
+    maritalStatus: document.querySelector('select[name="maritalStatus"]').value,
+    employmentStatus: document.querySelector('select[name="employmentStatus"]').value,
+    additionalInfo: document.querySelector('input[name="additionalInfo"]').value
   };
 
   // Send the form data to the server
@@ -111,42 +111,42 @@ document.getElementById('appointment-form').addEventListener('submit', function(
 
 
 
-  document.getElementById('appointment-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+document.getElementById('appointment-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    // Collect form data
-    const formData = {
-        gname: document.getElementById('gname').value,
-        gmail: document.getElementById('gmail').value,
-        phone: document.getElementById('phone').value,
-        address: document.getElementById('address').value, // Newly added field
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value,
-        whereHeard: document.querySelector('input[placeholder="Where did you hear about us?"]').value, // Newly added field
-        adequateInsurance: document.querySelector('input[placeholder="Do you have adequate life insurance?"]').value, // Newly added field
-        retirementPlan: document.querySelector('input[placeholder="Do you have a retirement plan?"]').value, // Newly added field
-        reasonForInsurance: document.querySelector('input[placeholder="What is your reason to get life insurance?"]').value, // Newly added field
-        productEducation: document.querySelector('input[placeholder="Education about the product?"]').value, // Newly added field
-        retirementChoice: document.querySelector('input[placeholder="Would you want retirement by default or designer?"]').value, // Newly added field
-        taxPreference: document.querySelector('input[placeholder="Would you want tax-free or taxable retirement?"]').value, // Newly added field
-        maritalStatus: document.querySelector('input[placeholder="Are you married or single?"]').value, // Newly added field
-        employmentStatus: document.querySelector('input[placeholder="Are you employed or unemployed?"]').value, // Newly added field
-        additionalInfo: document.querySelector('input[placeholder="Any additional information?"]').value // Newly added field
-    };
+  // Collect form data
+  const formData = {
+      gname: document.getElementById('gname').value,
+      gmail: document.getElementById('gmail').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value, // Newly added field
+      whereHeard: document.getElementById('whereHeard').value, // Corrected selector
+      adequateInsurance: document.getElementById('adequateInsurance').value, // Corrected selector
+      retirementPlan: document.getElementById('retirementPlan').value, // Corrected selector
+      reasonForInsurance: document.getElementById('reasonForInsurance').value, // Corrected selector
+      productEducation: document.getElementById('productEducation').value, // Corrected selector
+      retirementChoice: document.getElementById('retirementChoice').value, // Corrected selector
+      taxPreference: document.getElementById('taxPreference').value, // Corrected selector
+      maritalStatus: document.getElementById('maritalStatus').value, // Corrected selector
+      employmentStatus: document.getElementById('employmentStatus').value, // Corrected selector
+      additionalInfo: document.getElementById('additionalInfo').value // Corrected selector
+  };
 
-    // Send the form data to the server
-    fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data); // Display server response
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+  // Send the form data to the server
+  fetch('https://one-off-elite-server.vercel.app/send-email', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+  })
+  .then(response => response.text())
+  .then(data => {
+      alert(data); // Display server response
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+
+  document.getElementById('book-meeting-button').style.display = 'block';
 });
