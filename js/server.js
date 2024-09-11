@@ -74,10 +74,10 @@ document.getElementById('appointment-form').addEventListener('submit', function(
 
   // Collect form data
   const formData = {
-    gname: document.getElementById('gname').value,
-    gmail: document.getElementById('gmail').value,
-    phone: document.getElementById('phone').value,
-    address: document.getElementById('address').value,
+    // gname: document.getElementById('gname').value,
+    // gmail: document.getElementById('gmail').value,
+    // phone: document.getElementById('phone').value,
+    // address: document.getElementById('address').value,
     service: document.getElementById('service').value,
     message: document.getElementById('message').value,
     whereHeard: document.querySelector('select[name="whereHeard"]').value,
@@ -116,10 +116,10 @@ document.getElementById('appointment-form').addEventListener('submit', function(
 
   // Collect form data
   const formData = {
-      gname: document.getElementById('gname').value,
-      gmail: document.getElementById('gmail').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value, // Newly added field
+      // gname: document.getElementById('gname').value,
+      // gmail: document.getElementById('gmail').value,
+      // phone: document.getElementById('phone').value,
+      // address: document.getElementById('address').value, // Newly added field
       whereHeard: document.getElementById('whereHeard').value, // Corrected selector
       adequateInsurance: document.getElementById('adequateInsurance').value, // Corrected selector
       retirementPlan: document.getElementById('retirementPlan').value, // Corrected selector
