@@ -127,7 +127,7 @@ document.getElementById('appointment-form').addEventListener('submit', function(
       productEducation: document.getElementById('productEducation').value, // Corrected selector
       retirementChoice: document.getElementById('retirementChoice').value, // Corrected selector
       taxPreference: document.getElementById('taxPreference').value, // Corrected selector
-      maritalStatus: document.getElementById('maritalStatus').value, // Corrected selector
+      typeofinsurances: document.getElementById('typeofinsurances').value, // Corrected selector
       employmentStatus: document.getElementById('employmentStatus').value, // Corrected selector
       additionalInfo: document.getElementById('additionalInfo').value // Corrected selector
   };
