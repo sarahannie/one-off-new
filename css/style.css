@@ -550,14 +550,27 @@
   ::placeholder {
     font-size: 1rem; 
   }
+  select option .selects {
+    font-size: 1px;
+  }
   
   /* Media query for small screens */
   @media (max-width: 600px) {
     ::placeholder {
-      font-size: 12px;
+      font-size: 10px;
     }
 
-    select option.selects {
-        font-size: 8px;
+    select.form-control {
+        font-size: 10px; /* Reduce font size */
+        padding: 8px; /* Adjust padding if necessary */
+        width: 100%; /* Ensure it takes the full width of the container */
+        text-overflow: ellipsis; /* Handle overflow with ellipsis */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide the overflow */
+      }
+    
+      /* Optionally adjust the dropdown options font size */
+      select.form-control option {
+        font-size: 10px; /* Adjust font size for the dropdown options */
       }
   }
