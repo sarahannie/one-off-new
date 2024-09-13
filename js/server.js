@@ -36,7 +36,7 @@ function nextPrev(n) {
 function validateForm() {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
+  y = x[currentTab].getElementsByClassName("inputs");
   
   // Check all inputs in the current tab
   for (i = 0; i < y.length; i++) {
