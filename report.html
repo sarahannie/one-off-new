@@ -4,33 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Appointment Data</title>
+  <!-- Material Components for Web (MDC) CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 16px;
+      text-align: left;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
 </head>
 <body>
   <h1>Appointment Data</h1>
-  <table class="table" border="1">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Address</th>
-        <th scope="col">Where Heard</th>
-        <th scope="col">Adequate Insurance</th>
-        <th scope="col">Retirement Plan</th>
-        <th scope="col">Reason for Insurance</th>
-        <th scope="col">Product Education</th>
-        <th scope="col">Retirement Choice</th>
-        <th scope="col">Tax Preference</th>
-        <th scope="col">Marital Status</th>
-        <th scope="col">Employment Status</th>
-        <th scope="col">Additional Info</th>
-      </tr>
-    </thead>
-    <tbody id="table-body">
-      <!-- Data rows will be inserted here -->
-    </tbody>
-  </table>
+  <div class="mdc-data-table">
+    <table class="mdc-data-table__table">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" scope="col">#</th>
+          <th class="mdc-data-table__header-cell" scope="col">Name</th>
+          <th class="mdc-data-table__header-cell" scope="col">Email</th>
+          <th class="mdc-data-table__header-cell" scope="col">Phone</th>
+          <th class="mdc-data-table__header-cell" scope="col">Address</th>
+          <th class="mdc-data-table__header-cell" scope="col">Where Heard</th>
+          <th class="mdc-data-table__header-cell" scope="col">Adequate Insurance</th>
+          <th class="mdc-data-table__header-cell" scope="col">Retirement Plan</th>
+          <th class="mdc-data-table__header-cell" scope="col">Reason for Insurance</th>
+          <th class="mdc-data-table__header-cell" scope="col">Product Education</th>
+          <th class="mdc-data-table__header-cell" scope="col">Retirement Choice</th>
+          <th class="mdc-data-table__header-cell" scope="col">Tax Preference</th>
+          <th class="mdc-data-table__header-cell" scope="col">Marital Status</th>
+          <th class="mdc-data-table__header-cell" scope="col">Employment Status</th>
+          <th class="mdc-data-table__header-cell" scope="col">Additional Info</th>
+        </tr>
+      </thead>
+      <tbody id="table-body" class="mdc-data-table__content">
+        <!-- Data rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Material Components for Web (MDC) JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script>
 
   <script>
     // Fetch data from the backend
@@ -49,22 +73,23 @@
       const tableBody = document.getElementById('table-body');
       data.forEach((appointment, index) => {
         const row = document.createElement('tr');
+        row.classList.add('mdc-data-table__row');
         row.innerHTML = `
-          <th scope="row">${index + 1}</th>
-          <td>${appointment.gname}</td>
-          <td>${appointment.gmail}</td>
-          <td>${appointment.phone}</td>
-          <td>${appointment.address}</td>
-          <td>${appointment.whereHeard}</td>
-          <td>${appointment.adequateInsurance}</td>
-          <td>${appointment.retirementPlan}</td>
-          <td>${appointment.reasonForInsurance}</td>
-          <td>${appointment.productEducation}</td>
-          <td>${appointment.retirementChoice}</td>
-          <td>${appointment.taxPreference}</td>
-          <td>${appointment.maritalStatus}</td>
-          <td>${appointment.employmentStatus}</td>
-          <td>${appointment.additionalInfo}</td>
+          <th class="mdc-data-table__cell" scope="row">${index + 1}</th>
+          <td class="mdc-data-table__cell">${appointment.gname}</td>
+          <td class="mdc-data-table__cell">${appointment.gmail}</td>
+          <td class="mdc-data-table__cell">${appointment.phone}</td>
+          <td class="mdc-data-table__cell">${appointment.address}</td>
+          <td class="mdc-data-table__cell">${appointment.whereHeard}</td>
+          <td class="mdc-data-table__cell">${appointment.adequateInsurance}</td>
+          <td class="mdc-data-table__cell">${appointment.retirementPlan}</td>
+          <td class="mdc-data-table__cell">${appointment.reasonForInsurance}</td>
+          <td class="mdc-data-table__cell">${appointment.productEducation}</td>
+          <td class="mdc-data-table__cell">${appointment.retirementChoice}</td>
+          <td class="mdc-data-table__cell">${appointment.taxPreference}</td>
+          <td class="mdc-data-table__cell">${appointment.maritalStatus}</td>
+          <td class="mdc-data-table__cell">${appointment.employmentStatus}</td>
+          <td class="mdc-data-table__cell">${appointment.additionalInfo}</td>
         `;
         tableBody.appendChild(row);
       });
