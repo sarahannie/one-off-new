@@ -69,45 +69,45 @@ function fixStepIndicator(n) {
 }
 
 // Add event listener to handle the form submission
-document.getElementById('appointment-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
+// document.getElementById('appointment-form').addEventListener('submit', function(event) {
+//   event.preventDefault(); // Prevent the default form submission
 
-  // Collect form data
-  const formData = {
-    gname: document.getElementById('gname').value,
-    gmail: document.getElementById('gmail').value,
-    phone: document.getElementById('phone').value,
-    address: document.getElementById('address').value,
-    service: document.getElementById('service').value,
-    message: document.getElementById('message').value,
-    whereHeard: document.querySelector('select[name="whereHeard"]').value,
-    adequateInsurance: document.querySelector('select[name="adequateInsurance"]').value,
-    retirementPlan: document.querySelector('select[name="retirementPlan"]').value,
-    reasonForInsurance: document.querySelector('input[name="reasonForInsurance"]').value,
-    productEducation: document.querySelector('select[name="productEducation"]').value,
-    retirementChoice: document.querySelector('select[name="retirementChoice"]').value,
-    taxPreference: document.querySelector('select[name="taxPreference"]').value,
-    maritalStatus: document.querySelector('select[name="maritalStatus"]').value,
-    employmentStatus: document.querySelector('select[name="employmentStatus"]').value,
-    additionalInfo: document.querySelector('input[name="additionalInfo"]').value
-  };
+//   // Collect form data
+//   const formData = {
+//     gname: document.getElementById('gname').value,
+//     gmail: document.getElementById('gmail').value,
+//     phone: document.getElementById('phone').value,
+//     address: document.getElementById('address').value,
+//     service: document.getElementById('service').value,
+//     message: document.getElementById('message').value,
+//     whereHeard: document.querySelector('select[name="whereHeard"]').value,
+//     adequateInsurance: document.querySelector('select[name="adequateInsurance"]').value,
+//     retirementPlan: document.querySelector('select[name="retirementPlan"]').value,
+//     reasonForInsurance: document.querySelector('input[name="reasonForInsurance"]').value,
+//     productEducation: document.querySelector('select[name="productEducation"]').value,
+//     retirementChoice: document.querySelector('select[name="retirementChoice"]').value,
+//     taxPreference: document.querySelector('select[name="taxPreference"]').value,
+//     maritalStatus: document.querySelector('select[name="maritalStatus"]').value,
+//     employmentStatus: document.querySelector('select[name="employmentStatus"]').value,
+//     additionalInfo: document.querySelector('input[name="additionalInfo"]').value
+//   };
 
-  // Send the form data to the server
-  fetch('https://one-off-elite-server.vercel.app/send-email', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-  })
-  .then(response => response.text())
-  .then(data => {
-      alert(data); // Display server response
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
-});
+//   // Send the form data to the server
+//   fetch('https://one-off-elite-server.vercel.app/send-email', {
+//       method: 'POST',
+//       headers: {
+//           'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(formData)
+//   })
+//   .then(response => response.text())
+//   .then(data => {
+//       alert(data); // Display server response
+//   })
+//   .catch(error => {
+//       console.error('Error:', error);
+//   });
+// });
 
 
 
@@ -133,20 +133,22 @@ document.getElementById('appointment-form').addEventListener('submit', function(
   };
 
   // Send the form data to the server
-  fetch('https://one-off-elite-server.vercel.app/send-email', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-  })
-  .then(response => response.text())
-  .then(data => {
-      alert(data); // Display server response
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
+  // fetch('localhost:3000/send-email', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(formData)
+  // })
+  // .then(response => response.text())
+  // .then(data => {
+  //     alert(data); // Display server response
+  // })
+  // .catch(error => {
+  //     console.error('Error:', error);
+  // });
+
+  console.log(formData);
 
   document.getElementById('book-meeting-button').style.display = 'block';
 });
