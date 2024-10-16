@@ -123,7 +123,7 @@ document.getElementById('appointment-form').addEventListener('submit', function(
       whereHeard: document.getElementById('whereHeard').value, // Corrected selector
       adequateInsurance: document.getElementById('adequateInsurance').value, // Corrected selector
       retirementPlan: document.getElementById('retirementPlan').value, // Corrected selector
-      reasonForInsurance: document.getElementById('reasonForInsurance').value, // Corrected selector
+      // reasonForInsurance: document.getElementById('reasonForInsurance').value, // Corrected selector
       productEducation: document.getElementById('productEducation').value, // Corrected selector
       retirementChoice: document.getElementById('retirementChoice').value, // Corrected selector
       taxPreference: document.getElementById('taxPreference').value, // Corrected selector
@@ -133,22 +133,20 @@ document.getElementById('appointment-form').addEventListener('submit', function(
   };
 
   // Send the form data to the server
-  // fetch('localhost:3000/send-email', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(formData)
-  // })
-  // .then(response => response.text())
-  // .then(data => {
-  //     alert(data); // Display server response
-  // })
-  // .catch(error => {
-  //     console.error('Error:', error);
-  // });
-
-  console.log(formData);
+  fetch('https://one-off-elite-server.vercel.app/send-email', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+  })
+  .then(response => response.text())
+  .then(data => {
+      alert(data); // Display server response
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
 
   document.getElementById('book-meeting-button').style.display = 'block';
 });
