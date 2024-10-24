@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Appointment Data</title>
-  <!-- Material Components for Web (MDC) CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css">
   <style>
     body {
@@ -17,7 +16,6 @@
       width: 100%;
       max-height: 500px;
       overflow-y: auto;
-      overflow-x: auto;
       margin-top: 20px;
     }
     table {
@@ -25,22 +23,45 @@
       border-collapse: collapse;
     }
     th, td {
-      padding: 200px; /* Increased padding for more space */
+      padding: 16px;
       text-align: left;
     }
     th {
       background-color: #f5f5f5;
       position: sticky;
-      top: 0; /* Make headers sticky when scrolling */
+      top: 0;
     }
     tr:nth-child(even) {
       background-color: #f9f9f9;
     }
-    /* Add horizontal scroll for smaller screens */
     @media (max-width: 768px) {
       .table-container {
         overflow-x: scroll;
       }
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+    }
+    .close-btn {
+      cursor: pointer;
+      float: right;
+      font-size: 20px;
     }
   </style>
 </head>
@@ -49,51 +70,41 @@
   <div class="table-container">
     <table class="mdc-data-table__table">
       <thead>
-        <tr class="mdc-data-table__header-row">
-          
-          <th class="mdc-data-table__header-cell" scope="col">Name</th>
-          <th class="mdc-data-table__header-cell" scope="col">Email</th>
-          <th class="mdc-data-table__header-cell" scope="col">Phone</th>
-          <th class="mdc-data-table__header-cell" scope="col">Address</th>
-          <!-- <th class="mdc-data-table__header-cell" scope="col">Where Heard</th>
-          <th class="mdc-data-table__header-cell" scope="col">Adequate Insurance</th>
-          <th class="mdc-data-table__header-cell" scope="col">Retirement Plan</th>
-          <th class="mdc-data-table__header-cell" scope="col">Reason for Insurance</th>
-          <th class="mdc-data-table__header-cell" scope="col">Product Education</th>
-          <th class="mdc-data-table__header-cell" scope="col">Retirement Choice</th>
-          <th class="mdc-data-table__header-cell" scope="col">Tax Preference</th>
-          <th class="mdc-data-table__header-cell" scope="col">Marital Status</th>
-          <th class="mdc-data-table__header-cell" scope="col">Employment Status</th>
-          <th class="mdc-data-table__header-cell" scope="col">Additional Info</th> -->
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="table-body" class="mdc-data-table__content">
+      <tbody id="table-body">
         <!-- Data rows will be inserted here -->
       </tbody>
     </table>
-    
   </div>
 
-  <div id="appointment-details" style="display:none;">
-    <h2>Appointment Details</h2>
-    <p><strong>Name:</strong> <span id="detail-name"></span></p>
-    <p><strong>Email:</strong> <span id="detail-email"></span></p>
-    <p><strong>Phone:</strong> <span id="detail-phone"></span></p>
-    <p><strong>Address:</strong> <span id="detail-address"></span></p>
-    <p><strong>Where Heard:</strong> <span id="detail-where-heard"></span></p>
-    <p><strong>Adequate Insurance:</strong> <span id="detail-adequate-insurance"></span></p>
-    <p><strong>Retirement Plan:</strong> <span id="detail-retirement-plan"></span></p>
-    <p><strong>Reason for Insurance:</strong> <span id="detail-reason-insurance"></span></p>
-    <p><strong>Product Education:</strong> <span id="detail-product-education"></span></p>
-    <p><strong>Retirement Choice:</strong> <span id="detail-retirement-choice"></span></p>
-    <p><strong>Tax Preference:</strong> <span id="detail-tax-preference"></span></p>
-    <p><strong>Marital Status:</strong> <span id="detail-marital-status"></span></p>
-    <p><strong>Employment Status:</strong> <span id="detail-employment-status"></span></p>
-    <p><strong>Additional Info:</strong> <span id="detail-additional-info"></span></p>
+  <!-- Modal for Appointment Details -->
+  <div id="appointment-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>Appointment Details</h2>
+      <p><strong>Name:</strong> <span id="detail-name"></span></p>
+      <p><strong>Email:</strong> <span id="detail-email"></span></p>
+      <p><strong>Phone:</strong> <span id="detail-phone"></span></p>
+      <p><strong>Address:</strong> <span id="detail-address"></span></p>
+      <p><strong>Where Heard:</strong> <span id="detail-where-heard"></span></p>
+      <p><strong>Adequate Insurance:</strong> <span id="detail-adequate-insurance"></span></p>
+      <p><strong>Retirement Plan:</strong> <span id="detail-retirement-plan"></span></p>
+      <p><strong>Reason for Insurance:</strong> <span id="detail-reason-insurance"></span></p>
+      <p><strong>Product Education:</strong> <span id="detail-product-education"></span></p>
+      <p><strong>Retirement Choice:</strong> <span id="detail-retirement-choice"></span></p>
+      <p><strong>Tax Preference:</strong> <span id="detail-tax-preference"></span></p>
+      <p><strong>Marital Status:</strong> <span id="detail-marital-status"></span></p>
+      <p><strong>Employment Status:</strong> <span id="detail-employment-status"></span></p>
+      <p><strong>Additional Info:</strong> <span id="detail-additional-info"></span></p>
+    </div>
   </div>
-
-  <!-- Material Components for Web (MDC) JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script>
 
   <script>
     // Fetch data from the backend
@@ -107,77 +118,70 @@
       }
     }
 
+    function populateTable(data) {
+      const tableBody = document.getElementById('table-body');
+      tableBody.innerHTML = ''; // Clear table before populating to avoid duplication
 
+      data.forEach((appointment, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${appointment.gname || 'N/A'}</td>
+          <td>${appointment.gmail || 'N/A'}</td>
+          <td>${appointment.phone || 'N/A'}</td>
+          <td>${appointment.address || 'N/A'}</td>
+          <td><button class="result-button" data-index="${index}">View Details</button></td>
+        `;
+        tableBody.appendChild(row);
+      });
 
-function populateTable(data) {
-  const tableBody = document.getElementById('table-body');
-  tableBody.innerHTML = ''; // Clear table before populating to avoid duplication
+      // Add event listeners to "View Details" buttons
+      const buttons = document.querySelectorAll('.result-button');
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          const index = this.getAttribute('data-index');
+          showDetails(data[index]); // Pass the correct data entry to the showDetails function
+        });
+      });
+    }
 
-  data.forEach((appointment, index) => {
-    const row = document.createElement('tr');
-    row.classList.add('mdc-data-table__row');
-    row.innerHTML = `
-      <td class="mdc-data-table__cell">${appointment.gname || 'N/A'}</td>
-      <td class="mdc-data-table__cell">${appointment.gmail || 'N/A'}</td>
-      <td class="mdc-data-table__cell">${appointment.phone || 'N/A'}</td>
-      <td class="mdc-data-table__cell">${appointment.address || 'N/A'}</td>
-      
-      <td class="mdc-data-table__cell">
-        <button class="result-button" data-index="${index}">View details</button>
-      </td>
-    `;
-    tableBody.appendChild(row);
-  });
+    function showDetails(appointment) {
+      if (!appointment) return;
 
-  // <td class="mdc-data-table__cell">${appointment.whereHeard || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.adequateInsurance || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.retirementPlan || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.reasonForInsurance || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.productEducation || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.retirementChoice || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.taxPreference || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.maritalStatus || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.employmentStatus || 'N/A'}</td>
-  //     <td class="mdc-data-table__cell">${appointment.additionalInfo || 'N/A'}</td>
+      // Populate the modal with appointment details
+      document.getElementById('detail-name').innerText = appointment.gname || 'N/A';
+      document.getElementById('detail-email').innerText = appointment.gmail || 'N/A';
+      document.getElementById('detail-phone').innerText = appointment.phone || 'N/A';
+      document.getElementById('detail-address').innerText = appointment.address || 'N/A';
+      document.getElementById('detail-where-heard').innerText = appointment.whereHeard || 'N/A';
+      document.getElementById('detail-adequate-insurance').innerText = appointment.adequateInsurance || 'N/A';
+      document.getElementById('detail-retirement-plan').innerText = appointment.retirementPlan || 'N/A';
+      document.getElementById('detail-reason-insurance').innerText = appointment.reasonForInsurance || 'N/A';
+      document.getElementById('detail-product-education').innerText = appointment.productEducation || 'N/A';
+      document.getElementById('detail-retirement-choice').innerText = appointment.retirementChoice || 'N/A';
+      document.getElementById('detail-tax-preference').innerText = appointment.taxPreference || 'N/A';
+      document.getElementById('detail-marital-status').innerText = appointment.maritalStatus || 'N/A';
+      document.getElementById('detail-employment-status').innerText = appointment.employmentStatus || 'N/A';
+      document.getElementById('detail-additional-info').innerText = appointment.additionalInfo || 'N/A';
 
-  // Add event listeners to "Result" buttons
-  const buttons = document.querySelectorAll('.result-button');
-  buttons.forEach(button => {
-    button.addEventListener('click', function() {
-      const index = this.getAttribute('data-index');
-      showDetails(data[index]); // Pass the correct data entry to the showDetails function
+      // Show the modal
+      document.getElementById('appointment-modal').style.display = 'flex';
+    }
+
+    // Close the modal when the "x" is clicked
+    document.getElementById('close-modal').addEventListener('click', function () {
+      document.getElementById('appointment-modal').style.display = 'none';
     });
-  });
-}  
 
+    // Close the modal when clicking outside the modal content
+    window.addEventListener('click', function (event) {
+      const modal = document.getElementById('appointment-modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
 
-
-function showDetails(appointment) {
-  if (!appointment) return;  // Ensure appointment data exists
-
-  document.getElementById('detail-name').innerText = appointment.gname || 'N/A';
-  document.getElementById('detail-email').innerText = appointment.gmail || 'N/A';
-  document.getElementById('detail-phone').innerText = appointment.phone || 'N/A';
-  document.getElementById('detail-address').innerText = appointment.address || 'N/A';
-  document.getElementById('detail-where-heard').innerText = appointment.whereHeard || 'N/A';
-  document.getElementById('detail-adequate-insurance').innerText = appointment.adequateInsurance || 'N/A';
-  document.getElementById('detail-retirement-plan').innerText = appointment.retirementPlan || 'N/A';
-  document.getElementById('detail-reason-insurance').innerText = appointment.reasonForInsurance || 'N/A';
-  document.getElementById('detail-product-education').innerText = appointment.productEducation || 'N/A';
-  document.getElementById('detail-retirement-choice').innerText = appointment.retirementChoice || 'N/A';
-  document.getElementById('detail-tax-preference').innerText = appointment.taxPreference || 'N/A';
-  document.getElementById('detail-marital-status').innerText = appointment.maritalStatus || 'N/A';
-  document.getElementById('detail-employment-status').innerText = appointment.employmentStatus || 'N/A';
-  document.getElementById('detail-additional-info').innerText = appointment.additionalInfo || 'N/A';
-
-  // Show the details section
-  document.getElementById('appointment-details').style.display = 'block';
-
-  document.querySelector('.table-container').style.display = 'none';
-}
-
-// Call fetchData to get the data when the page loads
-fetchData();  
+    // Fetch the data when the page loads
+    fetchData();
   </script>
 </body>
 </html>
